@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bitmoji Sample App</string>
+    <string name="unlink">Unlink</string>
+    <string name="friend_name">BFF \ud83e\udd18</string>
+    <string name="input_placeholder">Message</string>
+    <string name="bitmoji">Bitmoji</string>
+</resources>

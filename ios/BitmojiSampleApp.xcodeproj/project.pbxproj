@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C0DA23956C00C4999E06582 /* Pods_BitmojiSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE49483D33D192E34E3AAFA /* Pods_BitmojiSampleApp.framework */; };
+		B1A44A981F9FBF8B00537426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A44A971F9FBF8B00537426 /* AppDelegate.swift */; };
+		B1A44A9F1F9FBF8B00537426 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1A44A9D1F9FBF8B00537426 /* Main.storyboard */; };
+		B1A44AA11F9FBF8B00537426 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1A44AA01F9FBF8B00537426 /* Assets.xcassets */; };
+		B1A44AA41F9FBF8B00537426 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1A44AA21F9FBF8B00537426 /* LaunchScreen.storyboard */; };
+		B1ED95B11F9FC7BB006CBD14 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED95B01F9FC7BB006CBD14 /* ChatViewController.swift */; };
+		D82053FB20C8A678003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */; };
+		D82053FC20C8A678003CCB19 /* SCSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */; };
+		D82053FD20C8A678003CCB19 /* SCSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */; };
+		D82053FE20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */; };
+		D82053FF20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D820540020C8A67E003CCB19 /* SCSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */; };
+		D820540120C8A67E003CCB19 /* SCSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D820540220C8A67E003CCB19 /* SCSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */; };
+		D820540320C8A67E003CCB19 /* SCSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D87867E7202914A8008523B3 /* ChatMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867E6202914A8008523B3 /* ChatMessagesViewController.swift */; };
+		D87867EC202A01EB008523B3 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867EB202A01EB008523B3 /* ChatMessage.swift */; };
+		D87867EE202A0216008523B3 /* ChatImageMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867ED202A0216008523B3 /* ChatImageMessageViewCell.swift */; };
+		D87867F1202A2D7C008523B3 /* ChatTextMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867F0202A2D7C008523B3 /* ChatTextMessageViewCell.swift */; };
+		D87867F4202A5EE2008523B3 /* TouchInterceptingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867F3202A5EE2008523B3 /* TouchInterceptingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D8E3FE2A20067D9D00B071AB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D820540320C8A67E003CCB19 /* SCSDKLoginKit.framework in Embed Frameworks */,
+				D82053FF20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Embed Frameworks */,
+				D820540120C8A67E003CCB19 /* SCSDKCoreKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		60C8312F0FB8D9EB0D2B273A /* Pods-BitmojiSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitmojiSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitmojiSampleApp/Pods-BitmojiSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B1A44A941F9FBF8B00537426 /* BitmojiSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitmojiSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1A44A971F9FBF8B00537426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1A44A9E1F9FBF8B00537426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B1A44AA01F9FBF8B00537426 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1A44AA31F9FBF8B00537426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1A44AA51F9FBF8B00537426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1ED95B01F9FC7BB006CBD14 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D773D3C56676921909C50865 /* Pods-BitmojiSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitmojiSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitmojiSampleApp/Pods-BitmojiSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCSDKBitmojiKit.framework; path = BitmojiSampleApp/Frameworks/SCSDKBitmojiKit.framework; sourceTree = "<group>"; };
+		D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCSDKCoreKit.framework; path = BitmojiSampleApp/Frameworks/SCSDKCoreKit.framework; sourceTree = "<group>"; };
+		D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCSDKLoginKit.framework; path = BitmojiSampleApp/Frameworks/SCSDKLoginKit.framework; sourceTree = "<group>"; };
+		D87867E6202914A8008523B3 /* ChatMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagesViewController.swift; sourceTree = "<group>"; };
+		D87867EB202A01EB008523B3 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		D87867ED202A0216008523B3 /* ChatImageMessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatImageMessageViewCell.swift; sourceTree = "<group>"; };
+		D87867F0202A2D7C008523B3 /* ChatTextMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextMessageViewCell.swift; sourceTree = "<group>"; };
+		D87867F3202A5EE2008523B3 /* TouchInterceptingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchInterceptingView.swift; sourceTree = "<group>"; };
+		ECE49483D33D192E34E3AAFA /* Pods_BitmojiSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitmojiSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1A44A911F9FBF8B00537426 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D820540220C8A67E003CCB19 /* SCSDKLoginKit.framework in Frameworks */,
+				D82053FB20C8A678003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */,
+				D82053FE20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */,
+				D82053FD20C8A678003CCB19 /* SCSDKLoginKit.framework in Frameworks */,
+				D82053FC20C8A678003CCB19 /* SCSDKCoreKit.framework in Frameworks */,
+				D820540020C8A67E003CCB19 /* SCSDKCoreKit.framework in Frameworks */,
+				7C0DA23956C00C4999E06582 /* Pods_BitmojiSampleApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		155C62E1F45A18CB5D6958BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60C8312F0FB8D9EB0D2B273A /* Pods-BitmojiSampleApp.debug.xcconfig */,
+				D773D3C56676921909C50865 /* Pods-BitmojiSampleApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B1A44A8B1F9FBF8B00537426 = {
+			isa = PBXGroup;
+			children = (
+				B1A44A961F9FBF8B00537426 /* BitmojiSampleApp */,
+				B1A44A951F9FBF8B00537426 /* Products */,
+				B1ED95901F9FC1AB006CBD14 /* Frameworks */,
+				155C62E1F45A18CB5D6958BC /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		B1A44A951F9FBF8B00537426 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1A44A941F9FBF8B00537426 /* BitmojiSampleApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1A44A961F9FBF8B00537426 /* BitmojiSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				D87867F2202A5ED3008523B3 /* Group */,
+				D87867DF2029143A008523B3 /* Chat */,
+				B1ED95AF1F9FC7A0006CBD14 /* Supporting Files */,
+				B1A44A971F9FBF8B00537426 /* AppDelegate.swift */,
+				B1ED95B01F9FC7BB006CBD14 /* ChatViewController.swift */,
+			);
+			path = BitmojiSampleApp;
+			sourceTree = "<group>";
+		};
+		B1ED95901F9FC1AB006CBD14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */,
+				D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */,
+				D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */,
+				ECE49483D33D192E34E3AAFA /* Pods_BitmojiSampleApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1ED95AF1F9FC7A0006CBD14 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1A44A9D1F9FBF8B00537426 /* Main.storyboard */,
+				B1A44AA01F9FBF8B00537426 /* Assets.xcassets */,
+				B1A44AA21F9FBF8B00537426 /* LaunchScreen.storyboard */,
+				B1A44AA51F9FBF8B00537426 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D87867DF2029143A008523B3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D87867EF202A09D7008523B3 /* View */,
+				D87867EB202A01EB008523B3 /* ChatMessage.swift */,
+				D87867E6202914A8008523B3 /* ChatMessagesViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		D87867EF202A09D7008523B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D87867ED202A0216008523B3 /* ChatImageMessageViewCell.swift */,
+				D87867F0202A2D7C008523B3 /* ChatTextMessageViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D87867F2202A5ED3008523B3 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				D87867F3202A5EE2008523B3 /* TouchInterceptingView.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1A44A931F9FBF8B00537426 /* BitmojiSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1A44AA81F9FBF8B00537426 /* Build configuration list for PBXNativeTarget "BitmojiSampleApp" */;
+			buildPhases = (
+				16BD3231B53B3DB24EF3343D /* [CP] Check Pods Manifest.lock */,
+				B1A44A901F9FBF8B00537426 /* Sources */,
+				B1A44A911F9FBF8B00537426 /* Frameworks */,
+				B1A44A921F9FBF8B00537426 /* Resources */,
+				D8E3FE2A20067D9D00B071AB /* Embed Frameworks */,
+				58331D87DA6AFBA909D025D5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitmojiSampleApp;
+			productName = BitmojiSDKSample;
+			productReference = B1A44A941F9FBF8B00537426 /* BitmojiSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1A44A8C1F9FBF8B00537426 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Bitmoji;
+				TargetAttributes = {
+					B1A44A931F9FBF8B00537426 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B1A44A8F1F9FBF8B00537426 /* Build configuration list for PBXProject "BitmojiSampleApp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1A44A8B1F9FBF8B00537426;
+			productRefGroup = B1A44A951F9FBF8B00537426 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1A44A931F9FBF8B00537426 /* BitmojiSampleApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1A44A921F9FBF8B00537426 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1A44AA41F9FBF8B00537426 /* LaunchScreen.storyboard in Resources */,
+				B1A44AA11F9FBF8B00537426 /* Assets.xcassets in Resources */,
+				B1A44A9F1F9FBF8B00537426 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16BD3231B53B3DB24EF3343D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitmojiSampleApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58331D87DA6AFBA909D025D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BitmojiSampleApp/Pods-BitmojiSampleApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BitmojiSampleApp/Pods-BitmojiSampleApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1A44A901F9FBF8B00537426 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1ED95B11F9FC7BB006CBD14 /* ChatViewController.swift in Sources */,
+				D87867EE202A0216008523B3 /* ChatImageMessageViewCell.swift in Sources */,
+				B1A44A981F9FBF8B00537426 /* AppDelegate.swift in Sources */,
+				D87867E7202914A8008523B3 /* ChatMessagesViewController.swift in Sources */,
+				D87867EC202A01EB008523B3 /* ChatMessage.swift in Sources */,
+				D87867F4202A5EE2008523B3 /* TouchInterceptingView.swift in Sources */,
+				D87867F1202A2D7C008523B3 /* ChatTextMessageViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B1A44A9D1F9FBF8B00537426 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1A44A9E1F9FBF8B00537426 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B1A44AA21F9FBF8B00537426 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1A44AA31F9FBF8B00537426 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B1A44AA61F9FBF8B00537426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B1A44AA71F9FBF8B00537426 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1A44AA91F9FBF8B00537426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60C8312F0FB8D9EB0D2B273A /* Pods-BitmojiSampleApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 424M5254LK;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/BitmojiTestApp/Frameworks",
+					"$(PROJECT_DIR)/BitmojiSampleApp/Frameworks",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/BitmojiSampleApp/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapchat.connect.bitmojiSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1A44AAA1F9FBF8B00537426 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D773D3C56676921909C50865 /* Pods-BitmojiSampleApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 424M5254LK;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/BitmojiTestApp/Frameworks",
+					"$(PROJECT_DIR)/BitmojiSampleApp/Frameworks",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/BitmojiSampleApp/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.snapchat.connect.bitmojiSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1A44A8F1F9FBF8B00537426 /* Build configuration list for PBXProject "BitmojiSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1A44AA61F9FBF8B00537426 /* Debug */,
+				B1A44AA71F9FBF8B00537426 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1A44AA81F9FBF8B00537426 /* Build configuration list for PBXNativeTarget "BitmojiSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1A44AA91F9FBF8B00537426 /* Debug */,
+				B1A44AAA1F9FBF8B00537426 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1A44A8C1F9FBF8B00537426 /* Project object */;
+}

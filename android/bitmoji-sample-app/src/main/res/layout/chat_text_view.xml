@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:id="@+id/chat_spacer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minWidth="@dimen/chat_text_min_spacing"
+        />
+
+    <TextView
+        android:id="@+id/chat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/chat_item_margin"
+        android:layout_gravity="end"
+        android:paddingTop="@dimen/chat_text_vertical_padding"
+        android:paddingBottom="@dimen/chat_text_vertical_padding"
+        android:paddingLeft="@dimen/chat_text_horizontal_padding"
+        android:paddingRight="@dimen/chat_text_horizontal_padding"
+        android:textColor="@android:color/black"
+        android:background="@drawable/chat_bubble_grey"
+        />
+
+</LinearLayout>

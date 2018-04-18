@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bitmoji_container_height">250dp</dimen>
+    <dimen name="chat_padding">7.5dp</dimen>
+    <dimen name="chat_item_margin">2.5dp</dimen>
+    <dimen name="chat_image_size">180dp</dimen>
+    <dimen name="chat_text_min_spacing">100dp</dimen>
+    <dimen name="chat_text_vertical_padding">5dp</dimen>
+    <dimen name="chat_text_horizontal_padding">15dp</dimen>
+    <dimen name="chat_bubble_corner_radius">15dp</dimen>
+    <dimen name="input_bar_height">48dp</dimen>
+    <dimen name="input_field_height">36dp</dimen>
+    <dimen name="input_horizonal_padding">14dp</dimen>
+    <dimen name="header_height">48dp</dimen>
+    <dimen name="header_text_size">18sp</dimen>
+    <dimen name="item_margin">10dp</dimen>
+    <dimen name="border_width">0.5dp</dimen>
+    <dimen name="min_keyboard_height">200dp</dimen>
+</resources>

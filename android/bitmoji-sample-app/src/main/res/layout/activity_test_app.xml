@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content_view"
+    >
+
+    <FrameLayout
+        style="@style/HeaderBar"
+        >
+
+        <TextView
+            android:id="@+id/unlink_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:padding="@dimen/item_margin"
+            android:textColor="@android:color/holo_red_light"
+            android:text="@string/unlink"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="@string/friend_name"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/header_text_size"
+            android:gravity="center"
+            />
+
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/chat_padding"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/border_width"
+        android:background="@color/border_grey"
+        />
+
+    <LinearLayout
+        android:id="@+id/input_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_bar_height"
+        android:orientation="horizontal"
+        >
+
+        <FrameLayout
+            android:id="@+id/bitmoji_button"
+            android:layout_width="@dimen/input_bar_height"
+            android:layout_height="match_parent"
+            android:padding="@dimen/item_margin"
+            />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/item_margin"
+            android:layout_weight="1"
+            >
+
+            <EditText
+                android:id="@+id/input_field"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_field_height"
+                android:paddingStart="@dimen/input_horizonal_padding"
+                android:paddingEnd="@dimen/input_field_height"
+                android:hint="@string/input_placeholder"
+                android:background="@drawable/input_background"
+                android:inputType="text"
+                android:imeOptions="actionSend"
+                />
+
+            <Button
+                android:id="@+id/send_button"
+                android:layout_width="@dimen/input_field_height"
+                android:layout_height="@dimen/input_field_height"
+                android:layout_gravity="end"
+                android:background="@drawable/send_icon"
+                android:enabled="false"
+                />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/sdk_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bitmoji_container_height"
+        />
+
+</LinearLayout>

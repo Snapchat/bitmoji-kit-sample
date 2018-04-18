@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#E5E5E5</color>
+    <color name="colorAccent">@color/green_bubble_color</color>
+
+    <color name="border_grey">#CCCCCC</color>
+
+    <color name="grey_bubble_color">#E5E5E5</color>
+    <color name="green_bubble_color">#66CC99</color>
+</resources>

@@ -1,0 +1,20 @@
+PODS:
+  - PINCache (3.0.1-beta)
+  - Protobuf (3.5.0)
+
+DEPENDENCIES:
+  - PINCache (= 3.0.1-beta)
+  - Protobuf (~> 3.5)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PINCache
+    - Protobuf
+
+SPEC CHECKSUMS:
+  PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+
+PODFILE CHECKSUM: 1768be4dcb5898fe2941bfdd1187d5b1a7ec7e39
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,46 @@
+.DS_Store
+
+**/*.pyc
+
+## IntelliJ directory-based project format.
+.idea/
+**/*/.idea/
+
+## Gradle scratch directory
+**/.gradle
+.gradle
+
+## IntelliJ file-based project format.
+**/*.ipr
+**/*.iws
+**/*.iml
+
+## IntelliJ output
+out
+
+## jenv
+**/*/.java-version
+
+# Microsoft Visual Studio Code metadata
+**/*/.vscode
+
+## Mac directory custom attributes file.
+**/*/.DS_Store
+
+## Ignore build directory
+**/build
+
+## Ignore web portal generated files
+snap-connect-webapp/developer-portal/src/main/webapp/static/*
+
+## Appengine Generated Web XML
+**/appengine-web.xml
+
+**/.java-version
+
+## Snap Protect
+snap_protect
+snap.protect_DarwinInstaller.sh
+
+## Generated file
+app.yaml

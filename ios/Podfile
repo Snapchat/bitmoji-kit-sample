@@ -1,0 +1,10 @@
+platform :ios, '10.0'
+use_frameworks!
+
+target 'BitmojiSampleApp' do
+    workspace 'BitmojiSampleApp.xcworkspace'
+    project 'BitmojiSampleApp.xcodeproj'
+    pod 'Protobuf', '~> 3.5'
+    pod 'PINCache', '3.0.1-beta' 
+end
+

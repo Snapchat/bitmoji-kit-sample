@@ -1,0 +1,44 @@
+## Build generated
+build/
+DerivedData/
+*.framework
+!Vendor/*.framework
+*.dSYM
+
+## Project and workspace
+*.xcuserstate
+xcuserdata
+
+## Various settings
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+xschememanagement.plist
+*.xcuserdatad
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+.LSOverride
+*.DS_Store
+*.swp
+
+# Carthage
+Carthage/Checkouts
+Carthage/Build
+
+Pods
+
+# Buck
+*buck-out
+/buck-cache
+/.buckconfig.local
+/.buckd
+buck-headers
+.watchmanconfig

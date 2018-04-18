@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:id="@+id/chat_spacer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <FrameLayout
+        android:id="@+id/chat_image_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        >
+
+        <ImageView
+            android:id="@+id/chat_image"
+            android:layout_width="@dimen/chat_image_size"
+            android:layout_height="@dimen/chat_image_size"
+            android:layout_margin="@dimen/chat_item_margin"
+            />
+
+        <ProgressBar
+            style="@android:style/Widget.Holo.Light.ProgressBar"
+            android:id="@+id/chat_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
+</LinearLayout>
