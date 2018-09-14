@@ -1,6 +1,7 @@
 package com.snapchat.kit.bitmojisample.chat.viewholder;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +28,17 @@ public class ChatImageViewHolder extends ChatViewHolder {
         mLoadingIndicator = root.findViewById(R.id.chat_loading);
     }
 
-    public void setImageUrl(String imageUrl) {
-        mImageView.setImageDrawable(null);
-        mLoadingIndicator.setVisibility(View.VISIBLE);
+    public void setImageUrl(String imageUrl, Drawable preview) {
+        mImageView.setImageDrawable(preview);
+        mImageView.setVisibility(preview == null ? View.GONE : View.VISIBLE);
+        mLoadingIndicator.setVisibility(preview == null ? View.VISIBLE : View.GONE);
         Picasso.with(mContext)
                 .load(imageUrl)
                 .into(mImageView, new Callback() {
                     @Override
                     public void onSuccess() {
                         mLoadingIndicator.setVisibility(View.GONE);
+                        mImageView.setVisibility(View.VISIBLE);
                     }
 
                     @Override

@@ -1,8 +1,10 @@
 package com.snapchat.kit.bitmojisample;
 
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.snapchat.kit.sdk.SnapKit;
+import com.snapchat.kit.sdk.SnapLogin;
 import com.snapchat.kit.sdk.bitmoji.OnBitmojiSearchFocusChangeListener;
 import com.snapchat.kit.sdk.bitmoji.OnBitmojiSelectedListener;
 import com.snapchat.kit.sdk.bitmoji.ui.BitmojiFragment;
@@ -32,20 +35,26 @@ import com.snapchat.kit.bitmojisample.chat.model.ChatImageMessage;
 import com.snapchat.kit.bitmojisample.chat.model.ChatImageUrlMessage;
 import com.snapchat.kit.bitmojisample.chat.model.ChatMessage;
 import com.snapchat.kit.bitmojisample.chat.model.ChatTextMessage;
+import com.snapchat.kit.sdk.core.controller.LoginStateController;
+import com.snapchat.kit.sdk.login.models.UserDataResponse;
+import com.snapchat.kit.sdk.login.networking.FetchUserDataCallback;
 
 
 public class TestAppActivity extends FragmentActivity implements
         OnBitmojiSelectedListener,
         OnBitmojiSearchFocusChangeListener,
         TextView.OnEditorActionListener,
-        ViewTreeObserver.OnGlobalLayoutListener {
+        ViewTreeObserver.OnGlobalLayoutListener,
+        LoginStateController.OnLoginStateChangedListener {
 
     private static final float BITMOJI_CONTAINER_FOCUS_WEIGHT = 9.0f;
+    private static final String EXTERNAL_ID_QUERY = "{me{externalId}}";
 
     private final ChatAdapter mAdapter = new ChatAdapter();
 
     private View mContentView;
     private View mBitmojiContainer;
+    private View mFriendmojiToggle;
     private EditText mTextField;
     private RecyclerView mChatView;
 
@@ -53,6 +62,8 @@ public class TestAppActivity extends FragmentActivity implements
     private int mBaseRootViewHeightDiff = 0;
     private int mBitmojisSent = 0;
     private boolean mIsBitmojiVisible = true;
+    private boolean mShowingFriendmoji = false;
+    private String mMyExternalId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +76,7 @@ public class TestAppActivity extends FragmentActivity implements
         mContentView = findViewById(R.id.content_view);
         mBitmojiContainer = findViewById(R.id.sdk_container);
         mTextField = findViewById(R.id.input_field);
+        mFriendmojiToggle = findViewById(R.id.friendmoji_toggle);
         mChatView = findViewById(R.id.chat);
         mBitmojiContainerHeight = getResources().getDimensionPixelSize(R.dimen.bitmoji_container_height);
 
@@ -98,6 +110,16 @@ public class TestAppActivity extends FragmentActivity implements
                 sendButton.setEnabled(s.length() > 0);
             }
         });
+        mFriendmojiToggle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.sdk_container);
+                if (fragment instanceof BitmojiFragment) {
+                    ((BitmojiFragment) fragment).setFriend(mShowingFriendmoji ? null : mMyExternalId);
+                }
+                mShowingFriendmoji = !mShowingFriendmoji;
+            }
+        });
         sendButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,6 +143,7 @@ public class TestAppActivity extends FragmentActivity implements
         });
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        SnapLogin.getLoginStateController(this).addOnLoginStateChangedListener(this);
         mContentView.getViewTreeObserver().addOnGlobalLayoutListener(this);
         mTextField.requestFocus();
 
@@ -130,6 +153,10 @@ public class TestAppActivity extends FragmentActivity implements
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.bitmoji_button, new BitmojiIconFragment())
                 .commit();
+
+        if (SnapLogin.isUserLoggedIn(this)) {
+            loadExternalId();
+        }
     }
 
     @Override
@@ -165,8 +192,8 @@ public class TestAppActivity extends FragmentActivity implements
     }
 
     @Override
-    public void onBitmojiSelected(String imageUrl) {
-        handleBitmojiSend(imageUrl);
+    public void onBitmojiSelected(String imageUrl, Drawable previewDrawable) {
+        handleBitmojiSend(imageUrl, previewDrawable);
     }
 
     @Override
@@ -186,6 +213,21 @@ public class TestAppActivity extends FragmentActivity implements
     }
 
     @Override
+    public void onLoginSucceeded() {
+        loadExternalId();
+    }
+
+    @Override
+    public void onLoginFailed() {
+        // no-op
+    }
+
+    @Override
+    public void onLogout() {
+        // no-op
+    }
+
+    @Override
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEND) {
             sendText();
@@ -193,6 +235,24 @@ public class TestAppActivity extends FragmentActivity implements
             return true;
         }
         return false;
+    }
+
+    private void loadExternalId() {
+        SnapLogin.fetchUserData(this, EXTERNAL_ID_QUERY, null, new FetchUserDataCallback() {
+            @Override
+            public void onSuccess(@Nullable UserDataResponse userDataResponse) {
+                if (userDataResponse == null || userDataResponse.hasError()) {
+                    return;
+                }
+                mMyExternalId = userDataResponse.getData().getMe().getExternalId();
+                mFriendmojiToggle.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onFailure(boolean isNetworkError, int statusCode) {
+                // handle error
+            }
+        });
     }
 
     private void setBitmojiVisible(boolean isBitmojiVisible) {
@@ -212,8 +272,8 @@ public class TestAppActivity extends FragmentActivity implements
         currentFocus.clearFocus();
     }
 
-    private void handleBitmojiSend(String imageUrl) {
-        sendMessage(new ChatImageUrlMessage(true /*isFromMe*/, imageUrl));
+    private void handleBitmojiSend(String imageUrl, Drawable previewDrawable) {
+        sendMessage(new ChatImageUrlMessage(true /*isFromMe*/, imageUrl, previewDrawable));
 
         if (mBitmojisSent == 0) {
             sendDelayedMessage(new ChatTextMessage(false /*isFromMe*/, "Woah, nice Bitmoji!"), 500);

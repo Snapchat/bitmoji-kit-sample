@@ -46,7 +46,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
                     ((ChatImageMessage) message).getDrawableResId());
         } else if (message instanceof ChatImageUrlMessage) {
             ((ChatImageViewHolder) holder).setImageUrl(
-                    ((ChatImageUrlMessage) message).getImageUrl());
+                    ((ChatImageUrlMessage) message).getImageUrl(),
+                    ((ChatImageUrlMessage) message).getPreview());
         } else if (message instanceof ChatTextMessage) {
             ((ChatTextViewHolder) holder).setText(
                     ((ChatTextMessage) message).getText());

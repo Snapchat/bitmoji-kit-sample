@@ -5,4 +5,5 @@
     <string name="friend_name">BFF \ud83e\udd18</string>
     <string name="input_placeholder">Message</string>
     <string name="bitmoji">Bitmoji</string>
+    <string name="friendmoji">Friendmoji</string>
 </resources>

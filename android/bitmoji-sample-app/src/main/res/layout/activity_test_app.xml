@@ -32,6 +32,17 @@
             android:gravity="center"
             />
 
+        <TextView
+            android:id="@+id/friendmoji_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:padding="@dimen/item_margin"
+            android:textColor="@android:color/holo_blue_light"
+            android:text="@string/friendmoji"
+            android:visibility="gone"
+            />
+
     </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
