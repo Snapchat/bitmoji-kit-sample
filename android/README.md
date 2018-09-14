@@ -15,8 +15,8 @@ githubUsername=<github username>
 githubPassword=<personal access token>
 ```
 
-Add your client id and redirect url in the [AndroidManifest.xml](https://github.com/SnapConnect/bitmoji-sample/blob/master/android/bitmoji-sample-app/src/main/AndroidManifest.xml) file:
-* Add the client id and redirect url in the meta tags [here](https://github.com/SnapConnect/bitmoji-sample/blob/master/android/bitmoji-sample-app/src/main/AndroidManifest.xml#L16)
-* Add the format of your redirect url as data under the `SnapConnectActivity` [here](https://github.com/SnapConnect/bitmoji-sample/blob/master/android/bitmoji-sample-app/src/main/AndroidManifest.xml#L42)
+Add your client id and redirect url in the [AndroidManifest.xml](https://github.com/Snap-Kit/bitmoji-sample/blob/master/android/bitmoji-sample-app/src/main/AndroidManifest.xml) file:
+* Add the client id and redirect url in the meta tags [here](https://github.com/Snap-Kit/bitmoji-sample/blob/master/android/bitmoji-sample-app/src/main/AndroidManifest.xml#L16)
+* Add the format of your redirect url as data under the `SnapConnectActivity` [here](https://github.com/Snap-Kit/bitmoji-sample/blob/master/android/bitmoji-sample-app/src/main/AndroidManifest.xml#L42)
 
 Import the `build.gradle` file and build away!

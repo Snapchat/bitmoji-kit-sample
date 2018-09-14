@@ -1,3 +1,3 @@
 # Sample App Frameworks
 
-Please add the frameworks that you received (SnapConnectSDKBitmojiKit.framework, SnapConnectSDKLoginKit.framework, SnapConnectSDKCoreKit.framework) in this directory
+Please add the frameworks that you received (SCSDKBitmojiKit.framework, SCSDKLoginKit.framework, SCSDKCoreKit.framework) in this directory
