@@ -73,6 +73,7 @@ class ChatMessagesViewController : UICollectionViewController, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ChatMessagesViewController.imageCellReuseId, for: indexPath) as! ChatImageMessageViewCell
             cell.isFromMe = message.isFromMe
+            cell.image = message.image
             cell.imageURL = message.imageURL
             return cell
         case let message as ChatImageMessage:

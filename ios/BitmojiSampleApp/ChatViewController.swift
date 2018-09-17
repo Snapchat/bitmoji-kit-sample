@@ -10,6 +10,8 @@ import UIKit
 import SCSDKLoginKit
 import SCSDKBitmojiKit
 
+fileprivate let externalIdQuery = "{me{externalId}}"
+
 class ChatViewController: UIViewController {
     
     var stickerViewHeight: CGFloat {
@@ -21,11 +23,43 @@ class ChatViewController: UIViewController {
     }
 
     let inputBar = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-    let sendButton = UIButton(type: .custom)
-    let stickerVC = SCSDKBitmojiStickerPickerViewController()
+    let sendButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(#imageLiteral(resourceName: "send_inactive"), for: .disabled)
+        button.setImage(#imageLiteral(resourceName: "send_active"), for: .normal)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(send), for: .touchUpInside)
+        button.sizeToFit()
+        
+        return button
+    }()
     let messagesVC = ChatMessagesViewController()
-    let textField = UITextField()
-    
+    private(set) lazy var textField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = UIColor.white
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderWidth = 0.5
+        textField.layer.cornerRadius = 18
+        textField.placeholder = "Message"
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: 0))
+        textField.rightView = sendButton
+        textField.leftViewMode = .always
+        textField.rightViewMode = .always
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+
+        return textField
+    }()
+    let stickerVC = SCSDKBitmojiStickerPickerViewController()
+    private(set) lazy var unlinkButton: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "Unlink", style: .plain, target: self, action: #selector(unlink))
+        item.tintColor = .red
+        
+        return item
+    }()
+    private(set) lazy var friendmojiButton = UIBarButtonItem(title: "Friendmoji", style: .plain, target: self, action:#selector(toggleFriendmoji))
+
     var bottomConstraint: NSLayoutConstraint!
     var stickerPickerTopConstraint: NSLayoutConstraint!
     var bitmojisSent = 0
@@ -39,7 +73,6 @@ class ChatViewController: UIViewController {
             stickerPickerTopConstraint.constant = isStickerViewVisible ? -stickerViewHeight : 0
         }
     }
-    
     var keyboardHeight: CGFloat = 0
     var bitmojiSearchHasFocus = false {
         didSet {
@@ -49,7 +82,13 @@ class ChatViewController: UIViewController {
             updateAndAnimateLayoutContstraints(duration: 0.3, options: [.beginFromCurrentState])
         }
     }
-    
+    var externalId: String? {
+        didSet {
+            navigationItem.rightBarButtonItems =
+                externalId == nil ? [unlinkButton] : [unlinkButton, friendmojiButton]
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,33 +108,13 @@ class ChatViewController: UIViewController {
         inputBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(inputBar)
 
-        let unlinkButton = UIBarButtonItem(title: "Unlink", style: .plain, target: self, action: #selector(unlink))
-        navigationItem.rightBarButtonItem = unlinkButton
+        navigationItem.rightBarButtonItems = [unlinkButton]
         navigationItem.title = "BFF 🤘"
 
         let bitmojiButton = SCSDKBitmojiIconView()
         bitmojiButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleStickerViewVisible)))
         bitmojiButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bitmojiButton)
-        
-        sendButton.setImage(#imageLiteral(resourceName: "send_inactive"), for: .disabled)
-        sendButton.setImage(#imageLiteral(resourceName: "send_active"), for: .normal)
-        sendButton.isEnabled = false
-        sendButton.addTarget(self, action: #selector(send), for: .touchUpInside)
-        sendButton.sizeToFit()
-        
-        textField.backgroundColor = UIColor.white
-        textField.layer.borderColor = UIColor.lightGray.cgColor
-        textField.layer.borderWidth = 0.5
-        textField.layer.cornerRadius = 18
-        textField.placeholder = "Message"
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: 0))
-        textField.rightView = sendButton
-        textField.leftViewMode = .always
-        textField.rightViewMode = .always
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.delegate = self
-        textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         view.addSubview(textField)
         
         let bottomAnchor: NSLayoutYAxisAnchor
@@ -132,8 +151,12 @@ class ChatViewController: UIViewController {
             stickerPickerTopConstraint
             ])
 
+        SCSDKLoginClient.addLoginStatusObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)),
                                                name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        if SCSDKLoginClient.isUserLoggedIn {
+            loadExternalId()
+        }
     }
     
     override func loadView() {
@@ -181,6 +204,13 @@ class ChatViewController: UIViewController {
         SCSDKLoginClient.unlinkCurrentSession(completion: nil)
     }
     
+    @objc func toggleFriendmoji() {
+        guard let externalId = externalId else {
+            return
+        }
+        stickerVC.setFriendUserId(externalId)
+    }
+    
     @objc func toggleStickerViewVisible() {
         isStickerViewVisible = !isStickerViewVisible
         textField.endEditing(true)
@@ -194,11 +224,39 @@ class ChatViewController: UIViewController {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
+    
+    private func loadExternalId() {
+        SCSDKLoginClient.fetchUserData(
+            withQuery: externalIdQuery,
+            variables: nil,
+            success: { resp in
+                guard let resp = resp as? [String : Any],
+                    let data = resp["data"] as? [String : Any],
+                    let me = data["me"] as? [String : Any],
+                    let externalId = me["externalId"] as? String else {
+                        return
+                }
+                DispatchQueue.main.async {
+                    self.externalId = externalId
+                }
+        }, failure: { _, _ in
+            // handle error
+        })
+    }
+}
+
+extension ChatViewController: SCSDKLoginStatusObserver {
+
+    func scsdkLoginLinkDidSucceed() {
+        loadExternalId()
+    }
 }
 
 extension ChatViewController: SCSDKBitmojiStickerPickerViewControllerDelegate {
-    func bitmojiStickerPickerViewController(_ stickerPickerViewController: SCSDKBitmojiStickerPickerViewController, didSelectBitmojiWithURL bitmojiURL: String) {
-        handleBitmojiSend(imageURL: bitmojiURL)
+    func bitmojiStickerPickerViewController(_ stickerPickerViewController: SCSDKBitmojiStickerPickerViewController,
+                                            didSelectBitmojiWithURL bitmojiURL: String,
+                                            image: UIImage?) {
+        handleBitmojiSend(imageURL: bitmojiURL, image: image)
     }
     
     func bitmojiStickerPickerViewController(_ stickerPickerViewController: SCSDKBitmojiStickerPickerViewController, searchFieldFocusDidChangeWithFocus hasFocus: Bool) {
@@ -227,8 +285,8 @@ extension ChatViewController: TouchInterceptingViewDelegate {
 }
 
 extension ChatViewController {
-    func handleBitmojiSend(imageURL: String) {
-        messagesVC.add(ChatImageURLMessage(isFromMe: true, imageURL: imageURL))
+    func handleBitmojiSend(imageURL: String, image: UIImage?) {
+        messagesVC.add(ChatImageURLMessage(isFromMe: true, imageURL: imageURL, image: image))
         
         if bitmojisSent == 0 {
             sendMessagesFromFriend()

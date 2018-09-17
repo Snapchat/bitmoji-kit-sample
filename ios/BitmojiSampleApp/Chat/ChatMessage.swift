@@ -21,6 +21,7 @@ protocol ChatMessage {
 struct ChatImageURLMessage: ChatMessage {
     let isFromMe: Bool
     let imageURL: String
+    weak var image: UIImage?
     let cellType = ChatMessageCellType.image
 }
 

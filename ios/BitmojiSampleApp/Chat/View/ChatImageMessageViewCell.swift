@@ -25,16 +25,15 @@ class ChatImageMessageViewCell : UICollectionViewCell {
     
     var imageURL: String? {
         didSet {
-            guard oldValue != imageURL else {
+            guard oldValue != imageURL,
+                let imageURL = imageURL,
+                let url = URL(string: imageURL) else {
                 return
             }
-            imageView.image = nil
-            
-            guard let imageURL = imageURL, let url = URL(string: imageURL) else {
-                return
+            if image == nil {
+                spinner.isHidden = false
+                spinner.startAnimating()
             }
-            spinner.isHidden = false
-            spinner.startAnimating()
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 DispatchQueue.main.async {
                     guard let data = data, imageURL == self.imageURL else { return }

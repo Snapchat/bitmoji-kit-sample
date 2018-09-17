@@ -15,35 +15,13 @@
 		B1ED95B11F9FC7BB006CBD14 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ED95B01F9FC7BB006CBD14 /* ChatViewController.swift */; };
 		D82053FB20C8A678003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */; };
 		D82053FC20C8A678003CCB19 /* SCSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */; };
-		D82053FD20C8A678003CCB19 /* SCSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */; };
-		D82053FE20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */; };
-		D82053FF20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F820C8A677003CCB19 /* SCSDKBitmojiKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D820540020C8A67E003CCB19 /* SCSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */; };
-		D820540120C8A67E003CCB19 /* SCSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82053F920C8A677003CCB19 /* SCSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D820540220C8A67E003CCB19 /* SCSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */; };
-		D820540320C8A67E003CCB19 /* SCSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82053FA20C8A678003CCB19 /* SCSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D87867E7202914A8008523B3 /* ChatMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867E6202914A8008523B3 /* ChatMessagesViewController.swift */; };
 		D87867EC202A01EB008523B3 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867EB202A01EB008523B3 /* ChatMessage.swift */; };
 		D87867EE202A0216008523B3 /* ChatImageMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867ED202A0216008523B3 /* ChatImageMessageViewCell.swift */; };
 		D87867F1202A2D7C008523B3 /* ChatTextMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867F0202A2D7C008523B3 /* ChatTextMessageViewCell.swift */; };
 		D87867F4202A5EE2008523B3 /* TouchInterceptingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87867F3202A5EE2008523B3 /* TouchInterceptingView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D8E3FE2A20067D9D00B071AB /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D820540320C8A67E003CCB19 /* SCSDKLoginKit.framework in Embed Frameworks */,
-				D82053FF20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Embed Frameworks */,
-				D820540120C8A67E003CCB19 /* SCSDKCoreKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		60C8312F0FB8D9EB0D2B273A /* Pods-BitmojiSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitmojiSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitmojiSampleApp/Pods-BitmojiSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,10 +51,7 @@
 			files = (
 				D820540220C8A67E003CCB19 /* SCSDKLoginKit.framework in Frameworks */,
 				D82053FB20C8A678003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */,
-				D82053FE20C8A67E003CCB19 /* SCSDKBitmojiKit.framework in Frameworks */,
-				D82053FD20C8A678003CCB19 /* SCSDKLoginKit.framework in Frameworks */,
 				D82053FC20C8A678003CCB19 /* SCSDKCoreKit.framework in Frameworks */,
-				D820540020C8A67E003CCB19 /* SCSDKCoreKit.framework in Frameworks */,
 				7C0DA23956C00C4999E06582 /* Pods_BitmojiSampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +158,6 @@
 				B1A44A901F9FBF8B00537426 /* Sources */,
 				B1A44A911F9FBF8B00537426 /* Frameworks */,
 				B1A44A921F9FBF8B00537426 /* Resources */,
-				D8E3FE2A20067D9D00B071AB /* Embed Frameworks */,
 				58331D87DA6AFBA909D025D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -270,12 +244,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BitmojiSampleApp/Pods-BitmojiSampleApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${PODS_ROOT}/SnapSDK/SCSDKBitmojiKit.framework",
+				"${PODS_ROOT}/SnapSDK/SCSDKCoreKit.framework",
+				"${PODS_ROOT}/SnapSDK/SCSDKLoginKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSDKBitmojiKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSDKLoginKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -434,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 424M5254LK;
 				ENABLE_BITCODE = NO;
@@ -449,6 +430,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snapchat.connect.bitmojiSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -461,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 424M5254LK;
 				ENABLE_BITCODE = NO;
@@ -476,6 +459,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.snapchat.connect.bitmojiSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -1,20 +1,26 @@
 PODS:
-  - PINCache (3.0.1-beta)
-  - Protobuf (3.5.0)
+  - PINCache (2.3)
+  - PINOperation (1.1.1)
+  - SnapSDK/SCSDKBitmojiKit (1.1.2):
+    - PINCache (~> 2.3)
+    - PINOperation (~> 1.1)
+  - SnapSDK/SCSDKLoginKit (1.1.2)
 
 DEPENDENCIES:
-  - PINCache (= 3.0.1-beta)
-  - Protobuf (~> 3.5)
+  - SnapSDK/SCSDKBitmojiKit (= 1.1.2)
+  - SnapSDK/SCSDKLoginKit (= 1.1.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - PINCache
-    - Protobuf
+    - PINOperation
+    - SnapSDK
 
 SPEC CHECKSUMS:
-  PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
-  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
+  PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
+  SnapSDK: b2cfdf8224a7b3ddf42b2d3389356b80c23c3c0f
 
-PODFILE CHECKSUM: 1768be4dcb5898fe2941bfdd1187d5b1a7ec7e39
+PODFILE CHECKSUM: 0700e9410c1b51199048e57110f9b2f3eaf5a399
 
 COCOAPODS: 1.5.3
