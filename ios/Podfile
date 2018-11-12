@@ -4,6 +4,6 @@ use_frameworks!
 target 'BitmojiSampleApp' do
     workspace 'BitmojiSampleApp.xcworkspace'
     project 'BitmojiSampleApp.xcodeproj'
-    pod 'SnapSDK', '1.1.2', :subspecs => ['SCSDKLoginKit', 'SCSDKBitmojiKit']
+    pod 'SnapSDK', '1.1.4', :subspecs => ['SCSDKLoginKit', 'SCSDKBitmojiKit']
 end
 
