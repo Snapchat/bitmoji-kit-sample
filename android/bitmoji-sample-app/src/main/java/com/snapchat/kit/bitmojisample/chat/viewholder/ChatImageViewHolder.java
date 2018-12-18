@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 public class ChatImageViewHolder extends ChatViewHolder {
 
     private final Context mContext;
-    private final View mImageContainer;
     private final ImageView mImageView;
     private final View mLoadingIndicator;
 
@@ -23,7 +22,6 @@ public class ChatImageViewHolder extends ChatViewHolder {
         super(root);
 
         mContext = context;
-        mImageContainer = root.findViewById(R.id.chat_image_container);
         mImageView = root.findViewById(R.id.chat_image);
         mLoadingIndicator = root.findViewById(R.id.chat_loading);
     }
@@ -32,7 +30,7 @@ public class ChatImageViewHolder extends ChatViewHolder {
         mImageView.setImageDrawable(preview);
         mImageView.setVisibility(preview == null ? View.GONE : View.VISIBLE);
         mLoadingIndicator.setVisibility(preview == null ? View.VISIBLE : View.GONE);
-        Picasso.with(mContext)
+        Picasso.get()
                 .load(imageUrl)
                 .into(mImageView, new Callback() {
                     @Override
@@ -42,7 +40,7 @@ public class ChatImageViewHolder extends ChatViewHolder {
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception e) {
 
                     }
                 });
@@ -54,6 +52,6 @@ public class ChatImageViewHolder extends ChatViewHolder {
     }
 
     public void recycle() {
-        Picasso.with(mContext).cancelRequest(mImageView);
+        Picasso.get().cancelRequest(mImageView);
     }
 }

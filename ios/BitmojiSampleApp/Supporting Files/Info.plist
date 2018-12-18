@@ -47,6 +47,13 @@
 	<array>
 		<string>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</string>
 	</array>
+	<key>SCSDKFonts</key>
+	<dict>
+		<key>regular</key>
+		<string>AvenirNext-Medium</string>
+		<key>bold</key>
+		<string>AvenirNext-DemiBold</string>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -28,9 +28,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation ([
-            'com.snapchat.kit.sdk:bitmoji:1.1.2',
-            'com.snapchat.kit.sdk:login:1.1.2',
-            'com.snapchat.kit.sdk:core:1.1.2',
+            'com.snapchat.kit.sdk:bitmoji:1.2.0',
+            'com.snapchat.kit.sdk:bitmoji-search:1.2.0',
+            'com.snapchat.kit.sdk:login:1.2.0',
+            'com.snapchat.kit.sdk:core:1.2.0',
     ])
 
     implementation([

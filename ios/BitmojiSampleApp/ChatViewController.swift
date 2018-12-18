@@ -18,7 +18,14 @@ class ChatViewController: UIViewController {
         if !bitmojiSearchHasFocus {
             return 250
         }
-        let availableHeight = view.frame.height - inputBar.frame.height - keyboardHeight
+        var availableHeight = view.frame.height - inputBar.frame.height - keyboardHeight
+
+        if #available(iOS 11.0, *) {
+            availableHeight -= view.safeAreaInsets.top
+        } else {
+            availableHeight -= topLayoutGuide.length
+        }
+
         return availableHeight * 0.9
     }
 
@@ -51,7 +58,12 @@ class ChatViewController: UIViewController {
 
         return textField
     }()
-    let stickerVC = SCSDKBitmojiStickerPickerViewController()
+    let stickerVC: SCSDKBitmojiStickerPickerViewController =
+        SCSDKBitmojiStickerPickerViewController(config: SCSDKBitmojiStickerPickerConfigBuilder()
+            .withShowSearchBar(true)
+            .withShowSearchPills(true)
+            .withTheme(.light)
+            .build())
     private(set) lazy var unlinkButton: UIBarButtonItem = {
         let item = UIBarButtonItem(title: "Unlink", style: .plain, target: self, action: #selector(unlink))
         item.tintColor = .red

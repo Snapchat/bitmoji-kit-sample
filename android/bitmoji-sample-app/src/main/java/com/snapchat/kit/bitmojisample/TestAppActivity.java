@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -40,7 +40,7 @@ import com.snapchat.kit.sdk.login.models.UserDataResponse;
 import com.snapchat.kit.sdk.login.networking.FetchUserDataCallback;
 
 
-public class TestAppActivity extends FragmentActivity implements
+public class TestAppActivity extends AppCompatActivity implements
         OnBitmojiSelectedListener,
         OnBitmojiSearchFocusChangeListener,
         TextView.OnEditorActionListener,
@@ -148,7 +148,11 @@ public class TestAppActivity extends FragmentActivity implements
         mTextField.requestFocus();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.sdk_container, new BitmojiFragment())
+                .replace(R.id.sdk_container, BitmojiFragment.builder()
+                        .withShowSearchBar(true)
+                        .withShowSearchPills(true)
+                        .withTheme(R.style.MyBitmojiTheme)
+                        .build())
                 .commit();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.bitmoji_button, new BitmojiIconFragment())
