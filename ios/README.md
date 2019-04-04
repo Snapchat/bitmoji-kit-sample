@@ -14,6 +14,6 @@ pod install --repo-update
 
 ### Set up
 
-Add the client id and redirect in the [Info.plist](https://github.com/Snap-Kit/bitmoji-sample/blob/master/ios/BitmojiSampleApp/Supporting%20Files/Info.plist) file (See `CFBundleURLSchemes`, `SCSDKClientId` and `SCSDKRedirectUrl`).
+Add the client id and redirect in the [Info.plist](BitmojiSampleApp/Supporting%20Files/Info.plist) file (See `CFBundleURLSchemes`, `SCSDKClientId` and `SCSDKRedirectUrl`).
 
 Import `BitmojiSampleApp.xcworkspace` and start building!
