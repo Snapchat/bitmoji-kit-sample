@@ -29,6 +29,7 @@ import com.snapchat.kit.sdk.SnapLogin;
 import com.snapchat.kit.sdk.bitmoji.OnBitmojiSearchFocusChangeListener;
 import com.snapchat.kit.sdk.bitmoji.OnBitmojiSelectedListener;
 import com.snapchat.kit.sdk.bitmoji.ui.BitmojiFragment;
+import com.snapchat.kit.sdk.bitmoji.ui.BitmojiFragmentSearchMode;
 import com.snapchat.kit.sdk.bitmoji.ui.BitmojiIconFragment;
 import com.snapchat.kit.bitmojisample.chat.ChatAdapter;
 import com.snapchat.kit.bitmojisample.chat.model.ChatImageMessage;
@@ -57,6 +58,7 @@ public class TestAppActivity extends AppCompatActivity implements
     private View mFriendmojiToggle;
     private EditText mTextField;
     private RecyclerView mChatView;
+    private BitmojiFragment mBitmojiFragment;
 
     private int mBitmojiContainerHeight;
     private int mBaseRootViewHeightDiff = 0;
@@ -108,6 +110,9 @@ public class TestAppActivity extends AppCompatActivity implements
             @Override
             public void afterTextChanged(Editable s) {
                 sendButton.setEnabled(s.length() > 0);
+                if (mBitmojiFragment != null) {
+                    mBitmojiFragment.setSearchText(s.toString(), BitmojiFragmentSearchMode.SEARCH_RESULT_ONLY);
+                }
             }
         });
         mFriendmojiToggle.setOnClickListener(new OnClickListener() {
@@ -164,6 +169,26 @@ public class TestAppActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+
+        if (fragment instanceof BitmojiFragment) {
+            // Set the reference to the sticker picker fragment
+            // This should be done here in order to ensure that the reference is valid
+            // even when the containing activity or fragment is recreated
+            mBitmojiFragment = (BitmojiFragment) fragment;
+        } else if (fragment instanceof BitmojiIconFragment) {
+            // Attach the icon to the sticker picker to enable displaying a preview of
+            // results from BitmojiFragment#setSearchText()
+            // Note: This assumes that the icon is attached after the sticker picker
+            //       Ensure that the order is correct when adding these
+            if (mBitmojiFragment != null) {
+                mBitmojiFragment.attachBitmojiIcon((BitmojiIconFragment) fragment);
+            }
+        }
+    }
+
+    @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         Rect hitRect = new Rect();
 
@@ -186,7 +211,8 @@ public class TestAppActivity extends AppCompatActivity implements
 
             mContentView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-            params.height = heightDiff - mBaseRootViewHeightDiff;
+            mBitmojiContainerHeight = heightDiff - mBaseRootViewHeightDiff;
+            params.height = mBitmojiContainerHeight;
             mBitmojiContainer.setLayoutParams(params);
 
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);

@@ -123,10 +123,11 @@ class ChatViewController: UIViewController {
         navigationItem.rightBarButtonItems = [unlinkButton]
         navigationItem.title = "BFF 🤘"
 
-        let bitmojiButton = SCSDKBitmojiIconView()
-        bitmojiButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleStickerViewVisible)))
-        bitmojiButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bitmojiButton)
+        let bitmojiIcon = SCSDKBitmojiIconView()
+        bitmojiIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleStickerViewVisible)))
+        bitmojiIcon.translatesAutoresizingMaskIntoConstraints = false
+        stickerVC.attachBitmojiIcon(bitmojiIcon)
+        view.addSubview(bitmojiIcon)
         view.addSubview(textField)
         
         let bottomAnchor: NSLayoutYAxisAnchor
@@ -149,13 +150,13 @@ class ChatViewController: UIViewController {
             inputBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             inputBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             inputBar.heightAnchor.constraint(equalToConstant: 48),
-            bitmojiButton.centerYAnchor.constraint(equalTo: inputBar.centerYAnchor),
-            bitmojiButton.heightAnchor.constraint(equalTo: textField.heightAnchor),
-            bitmojiButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            bitmojiButton.widthAnchor.constraint(equalTo: textField.heightAnchor),
+            bitmojiIcon.centerYAnchor.constraint(equalTo: inputBar.centerYAnchor),
+            bitmojiIcon.heightAnchor.constraint(equalTo: textField.heightAnchor),
+            bitmojiIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            bitmojiIcon.widthAnchor.constraint(equalTo: textField.heightAnchor),
             textField.centerYAnchor.constraint(equalTo: inputBar.centerYAnchor),
             textField.heightAnchor.constraint(equalToConstant: 36),
-            textField.leadingAnchor.constraint(equalTo: bitmojiButton.trailingAnchor, constant: 10),
+            textField.leadingAnchor.constraint(equalTo: bitmojiIcon.trailingAnchor, constant: 10),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             stickerVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stickerVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -201,6 +202,7 @@ class ChatViewController: UIViewController {
     
     @objc func textChanged() {
         sendButton.isEnabled = !(textField.text?.isEmpty ?? true)
+        stickerVC.setSearchTerm(textField.text, searchMode: .searchResultOnly)
     }
     
     @objc func send() {

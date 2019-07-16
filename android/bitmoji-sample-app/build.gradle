@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
     publishNonDefault true
     defaultConfig {
         applicationId 'com.snapchat.kit.bitmojisample'
@@ -24,14 +23,20 @@ android {
     }
 }
 
+configurations.all {
+    if (it.name.contains("debug")) {
+        resolutionStrategy {
+            force 'com.snapchat.kit.sdk:core:1.3.2 x86'
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation ([
-            'com.snapchat.kit.sdk:bitmoji:1.2.0',
-            'com.snapchat.kit.sdk:bitmoji-search:1.2.0',
-            'com.snapchat.kit.sdk:login:1.2.0',
-            'com.snapchat.kit.sdk:core:1.2.0',
+            'com.snapchat.kit.sdk:bitmoji:1.3.2',
+            'com.snapchat.kit.sdk:login:1.3.2',
     ])
 
     implementation([
