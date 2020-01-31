@@ -1,13 +1,14 @@
 package com.snapchat.kit.bitmojisample;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -24,7 +25,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.snapchat.kit.sdk.SnapKit;
 import com.snapchat.kit.sdk.SnapLogin;
 import com.snapchat.kit.sdk.bitmoji.OnBitmojiSearchFocusChangeListener;
 import com.snapchat.kit.sdk.bitmoji.OnBitmojiSelectedListener;
@@ -134,7 +134,7 @@ public class TestAppActivity extends AppCompatActivity implements
         findViewById(R.id.unlink_button).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                SnapKit.unlink(TestAppActivity.this);
+                SnapLogin.getAuthTokenManager(TestAppActivity.this).clearToken();
             }
         });
         findViewById(R.id.bitmoji_button).setOnClickListener(new OnClickListener() {
