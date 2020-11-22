@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         >
 
-        <!-- Add your client id and redirect url below>
+        <!-- >https://github.com/Klaudiakk1008
         <meta-data android:name="com.snapchat.kit.sdk.clientId" android:value="" />
         <meta-data android:name="com.snapchat.kit.sdk.redirectUrl" android:value="" />
         <!-->
